@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+.vscode/
+build/
+Debug/
+Release/
+compile_flags.txt
