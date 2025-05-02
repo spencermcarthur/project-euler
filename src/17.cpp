@@ -1,5 +1,6 @@
 #include "problem.hpp"
 
+#include <cassert>
 #include <unordered_map>
 
 class Problem : public Problem_<17, Problem> {
@@ -10,6 +11,7 @@ class Problem : public Problem_<17, Problem> {
     for (unsigned i = 1; i <= n; i++)
       sum += count_letters(i);
 
+    assert(sum == 21124);
     std::cout << sum;
   }
 

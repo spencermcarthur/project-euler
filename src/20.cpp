@@ -2,6 +2,7 @@
 
 #include <boost/multiprecision/cpp_int.hpp>
 #include <boost/multiprecision/number.hpp>
+#include <cassert>
 
 namespace mp = boost::multiprecision;
 
@@ -17,6 +18,7 @@ class Problem : public Problem_<20, Problem> {
     for (char c : mp::to_string(f))
       sum += (c - '0');
 
+    assert(sum == 648);
     std::cout << sum;
   }
 };

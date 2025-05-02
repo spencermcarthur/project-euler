@@ -1,10 +1,16 @@
 #include "problem.hpp"
+#include <cassert>
 #include <unordered_map>
 
 class Problem : public Problem_<15, Problem> {
   friend class Problem_<15, Problem>;
 
-  void solution_impl(unsigned long n) { std::cout << recursion(n, n); }
+  void solution_impl(unsigned long n) {
+    unsigned long res = recursion(n, n);
+
+    assert(res == 137846528820);
+    std::cout << res;
+  }
 
   std::unordered_map<unsigned long, unsigned long> memo;
 

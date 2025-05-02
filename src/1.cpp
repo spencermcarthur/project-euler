@@ -1,4 +1,5 @@
 #include "problem.hpp"
+#include <cassert>
 
 class Problem : public Problem_<1, Problem> {
   friend class Problem_<1, Problem>;
@@ -8,6 +9,8 @@ class Problem : public Problem_<1, Problem> {
     for (unsigned long i = 0; i < n; i++)
       if (i % 3 == 0 || i % 5 == 0)
         sum += i;
+
+    assert(sum == 233168);
     std::cout << sum;
   }
 };

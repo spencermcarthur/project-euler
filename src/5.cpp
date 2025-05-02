@@ -1,5 +1,6 @@
 #include "problem.hpp"
 
+#include <cassert>
 #include <numeric>
 
 // https://en.wikipedia.org/wiki/Least_common_multiple#Other
@@ -12,6 +13,7 @@ class Problem : public Problem_<5, Problem> {
     for (unsigned long i = 2; i <= n; i++)
       res = lcm(res, i);
 
+    assert(res == 232792560);
     std::cout << res;
   }
 

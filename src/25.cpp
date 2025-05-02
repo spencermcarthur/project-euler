@@ -1,5 +1,6 @@
 #include "problem.hpp"
 
+#include <cassert>
 #include <cmath>
 #include <iostream>
 
@@ -16,7 +17,9 @@ class Problem : public Problem_<25, Problem> {
     // So n(F) = ceil( (log10(sqrt(5)) + 999) / log10(phi) )
 
     const double phi = (1 + std::sqrt(5)) / 2;
-    double n = std::ceil((std::log10(std::sqrt(5)) + 999) / std::log10(phi));
+    unsigned n = std::ceil((std::log10(std::sqrt(5)) + 999) / std::log10(phi));
+
+    assert(n == 4782);
     std::cout << n;
   }
 };

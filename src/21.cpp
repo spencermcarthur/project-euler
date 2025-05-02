@@ -1,5 +1,6 @@
 #include "problem.hpp"
 
+#include <cassert>
 #include <cmath>
 #include <set>
 #include <unordered_map>
@@ -25,6 +26,7 @@ class Problem : public Problem_<21, Problem> {
     for (auto [a, b] : amicable_pairs)
       sum += a + b;
 
+    assert(sum == 31626);
     std::cout << sum;
   }
 

@@ -1,6 +1,7 @@
 #include "problem.hpp"
 
 #include <algorithm>
+#include <cassert>
 #include <filesystem>
 #include <fstream>
 #include <sstream>
@@ -23,6 +24,8 @@ class Problem : public Problem_<18, Problem> {
         input[i][j] += std::max(input[i - 1][j], input[i - 1][j + 1]);
       }
     }
+
+    assert(input.back()[0] == 1074);
     std::cout << input.back()[0];
   }
 

@@ -1,5 +1,6 @@
 #include "problem.hpp"
 
+#include <cassert>
 #include <unordered_map>
 
 class Problem : public Problem_<14, Problem> {
@@ -14,6 +15,8 @@ class Problem : public Problem_<14, Problem> {
         maxSeqLen = seqLen;
       }
     }
+
+    assert(argMax == 837799);
     std::cout << argMax;
   }
 

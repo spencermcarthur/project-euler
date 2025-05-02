@@ -2,6 +2,7 @@
 #include "problem.hpp"
 
 #include <algorithm>
+#include <cassert>
 #include <filesystem>
 #include <fstream>
 #include <string>
@@ -26,6 +27,7 @@ class Problem : public Problem_<22, Problem> {
       sum += nameSum * (i + 1);
     }
 
+    assert(sum == 871198282);
     std::cout << sum;
   }
 

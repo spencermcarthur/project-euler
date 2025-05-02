@@ -1,5 +1,6 @@
 #include "prime.hpp"
 #include "problem.hpp"
+#include <cassert>
 
 class Problem : public Problem_<7, Problem> {
   friend class Problem_<7, Problem>;
@@ -10,6 +11,8 @@ class Problem : public Problem_<7, Problem> {
       if (is_prime(++n))
         i++;
     }
+
+    assert(n == 104743);
     std::cout << n;
   }
 };

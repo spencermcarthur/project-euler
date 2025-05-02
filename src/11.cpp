@@ -1,5 +1,6 @@
 #include "problem.hpp"
 
+#include <cassert>
 #include <filesystem>
 #include <fstream>
 #include <sstream>
@@ -16,7 +17,7 @@ class Problem : public Problem_<11, Problem> {
     load_input();
 
     unsigned maxProd{}, prod;
-    const int m = input.size(), n = input[0].size();
+    const unsigned m = input.size(), n = input[0].size();
     for (unsigned i = 0; i < input.size(); i++) {
       for (unsigned j = 0; j < input[0].size(); j++) {
         bool hasSpaceHoriz = j < n - 4;
@@ -53,6 +54,8 @@ class Problem : public Problem_<11, Problem> {
         }
       }
     }
+
+    assert(maxProd == 70600674);
     std::cout << maxProd;
   }
 

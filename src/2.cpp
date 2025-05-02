@@ -1,4 +1,5 @@
 #include "problem.hpp"
+#include <cassert>
 
 class Problem : public Problem_<2, Problem> {
   friend class Problem_<2, Problem>;
@@ -13,6 +14,8 @@ class Problem : public Problem_<2, Problem> {
       a = b;
       b = tmp;
     }
+
+    assert(sum == 4613732);
     std::cout << sum;
   }
 };

@@ -1,6 +1,7 @@
 #include "problem.hpp"
 
 #include <algorithm>
+#include <cassert>
 #include <iostream>
 #include <string>
 
@@ -10,11 +11,13 @@ class Problem : public Problem_<24, Problem> {
   void solution_impl(unsigned long) {
     std::string s{"0123456789"};
 
-    unsigned count{};
     for (int i = 0; i < 999'999; i++)
       std::next_permutation(s.begin(), s.end());
 
-    std::cout << s;
+    unsigned long perm = std::stoull(s);
+
+    assert(perm == 2783915460);
+    std::cout << perm;
   }
 };
 

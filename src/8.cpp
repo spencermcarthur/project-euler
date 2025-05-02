@@ -1,5 +1,6 @@
 #include "problem.hpp"
 
+#include <cassert>
 #include <filesystem>
 #include <fstream>
 #include <stdexcept>
@@ -25,6 +26,7 @@ class Problem : public Problem_<8, Problem> {
         maxProd = prod;
     }
 
+    assert(maxProd == 23514624000);
     std::cout << maxProd;
   }
 

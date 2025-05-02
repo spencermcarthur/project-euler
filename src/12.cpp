@@ -1,6 +1,7 @@
 #include "problem.hpp"
 #include "util.hpp"
 
+#include <cassert>
 #include <cmath>
 
 class Problem : public Problem_<12, Problem> {
@@ -17,6 +18,7 @@ private:
       div = count_divisors(tri);
     }
 
+    assert(tri == 76576500);
     std::cout << tri;
   }
 

@@ -1,4 +1,5 @@
 #include "problem.hpp"
+#include <cassert>
 #include <stdexcept>
 #include <string>
 
@@ -28,6 +29,7 @@ class Problem : public Problem_<19, Problem> {
       }
     }
 
+    assert(count == 171);
     std::cout << count;
   }
 

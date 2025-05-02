@@ -1,6 +1,7 @@
 #include "problem.hpp"
 
 #include <boost/multiprecision/cpp_int.hpp>
+#include <cassert>
 #include <filesystem>
 #include <fstream>
 #include <string>
@@ -20,7 +21,12 @@ class Problem : public Problem_<13, Problem> {
     LongNum res{};
     for (const LongNum &n : input_)
       res += n;
-    std::cout << mp::to_string(res).substr(0, 10);
+
+    unsigned long first_ten_digits =
+        std::stoull(mp::to_string(res).substr(0, 10));
+
+    assert(first_ten_digits == 5537376230);
+    std::cout << first_ten_digits;
   }
 
   void load_input() {

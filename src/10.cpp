@@ -1,5 +1,6 @@
 #include "prime.hpp"
 #include "problem.hpp"
+#include <cassert>
 
 class Problem : public Problem_<10, Problem> {
   friend class Problem_<10, Problem>;
@@ -10,6 +11,8 @@ class Problem : public Problem_<10, Problem> {
     for (unsigned long i = 0; i < n; i++)
       if (prime[i])
         sum += i;
+
+    assert(sum == 142913828922);
     std::cout << sum;
   }
 };

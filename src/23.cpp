@@ -1,5 +1,6 @@
 #include "problem.hpp"
 
+#include <cassert>
 #include <cmath>
 #include <iostream>
 #include <set>
@@ -29,6 +30,7 @@ private:
       if (!abundant_summable(i))
         sum += i;
 
+    assert(sum == 4179871);
     std::cout << sum;
   }
 

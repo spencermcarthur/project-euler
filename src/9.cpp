@@ -1,4 +1,5 @@
 #include "problem.hpp"
+#include <cassert>
 
 class Problem : public Problem_<9, Problem> {
   friend class Problem_<9, Problem>;
@@ -18,6 +19,8 @@ class Problem : public Problem_<9, Problem> {
       if (done)
         break;
     }
+
+    assert(prod == 31875000);
     std::cout << prod;
   }
 };

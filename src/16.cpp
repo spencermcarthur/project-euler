@@ -1,6 +1,7 @@
 #include "problem.hpp"
 
 #include <boost/multiprecision/cpp_int.hpp>
+#include <cassert>
 
 namespace mp = boost::multiprecision;
 
@@ -9,7 +10,7 @@ class Problem : public Problem_<16, Problem> {
 
   void solution_impl(unsigned long n) {
     mp::uint1024_t res = 1;
-    for (int i = 0; i < n; i++)
+    for (unsigned i = 0; i < n; i++)
       res *= 2;
 
     std::string s = mp::to_string(res);
@@ -17,6 +18,7 @@ class Problem : public Problem_<16, Problem> {
     for (char c : s)
       sum += (c - '0');
 
+    assert(sum == 1366);
     std::cout << sum;
   }
 };

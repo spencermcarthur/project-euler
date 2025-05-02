@@ -1,18 +1,21 @@
 #include "problem.hpp"
+#include <cassert>
 
 class Problem : public Problem_<4, Problem> {
   friend class Problem_<4, Problem>;
 
   void solution_impl(unsigned long) {
-    unsigned long lpp{0}, prod;
+    unsigned long largest_palindromic_product{0}, prod;
     for (unsigned long i = 999; i > 0; i--) {
       for (unsigned long j = 999; j > 0; j--) {
         prod = i * j;
-        if (is_palindromic(prod) && prod > lpp)
-          lpp = prod;
+        if (is_palindromic(prod) && prod > largest_palindromic_product)
+          largest_palindromic_product = prod;
       }
     }
-    std::cout << lpp;
+
+    assert(largest_palindromic_product == 906609);
+    std::cout << largest_palindromic_product;
   }
 
   bool is_palindromic(unsigned long n) {
