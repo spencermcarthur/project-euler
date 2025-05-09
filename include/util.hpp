@@ -1,6 +1,8 @@
 #pragma once
 
 #include <string>
+#include <unordered_map>
+#include <vector>
 
 unsigned long count_divisors(unsigned long n);
 
@@ -16,3 +18,11 @@ std::pair<unsigned, unsigned> unpair(unsigned long z);
 bool is_palindrome(const std::string &);
 
 bool is_integral(double);
+
+template <typename T>
+std::unordered_map<T, unsigned> count_freqs(const std::vector<T> &v) {
+  std::unordered_map<T, unsigned> freqs;
+  for (const T &t : v)
+    freqs[t]++;
+  return freqs;
+}
