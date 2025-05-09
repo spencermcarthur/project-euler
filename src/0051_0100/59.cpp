@@ -1,7 +1,7 @@
 #include "input.hpp"
+#include "keygen.hpp"
 #include "problem.hpp"
 
-#include <array>
 #include <cassert>
 #include <cstddef>
 #include <filesystem>
@@ -19,27 +19,24 @@ class Problem : public Problem_<59, Problem> {
 
   using char_t = unsigned char;
   static constexpr unsigned key_size = 3;
-  std::string alphabet;
-  using key_t = std::array<char_t, key_size>;
+  using keygen_t = KeyGenerator<key_size, char_t>;
+  using key_t = keygen_t::key_t;
+
+  const std::string alphabet{"abcdefghijklmnopqrstuvwxyz"};
+  keygen_t keygen;
 
   std::vector<char_t> encrypted;
-  std::vector<key_t> keys;
 
 public:
-  Problem() {
-    // Generate alphabet
-    for (char_t c = 'a'; c <= 'z'; c++)
-      alphabet += c;
-
-    load_input();
-    generate_keys();
-  }
+  Problem() : keygen(alphabet) { load_input(); }
 
 private:
   void solution_impl(unsigned long) {
     std::vector<char_t> decrypted;
+    keygen_t::key_t key;
     bool found{false};
-    for (const key_t &key : keys) {
+    for (size_t i = 0; i < keygen.num_possible_keys(); i++) {
+      keygen.get_next_key(key);
       decrypted = decrypt(key);
       if (is_text_valid(decrypted)) {
         found = true;
@@ -75,13 +72,9 @@ private:
   bool is_char_valid(char_t c) {
     static const std::string punct_chars{" ,./?;:\'\"!()-"};
 
-    if (c >= '0' && c <= '9')
+    if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') ||
+        (c >= 'a' && c <= 'z'))
       return true;
-    else if (c >= 'A' && c <= 'Z')
-      return true;
-    else if (c >= 'a' && c <= 'z')
-      return true;
-
     for (char_t test : punct_chars)
       if (c == test)
         return true;
@@ -94,28 +87,6 @@ private:
     for (size_t i = 0; i < encrypted.size(); i++)
       decrypted[i] = encrypted[i] ^ key[i % key_size];
     return decrypted;
-  }
-
-  void generate_keys() {
-    unsigned num_keys{1};
-    for (unsigned i = 0; i < key_size; i++)
-      num_keys *= alphabet.size();
-    keys.reserve(num_keys);
-
-    gen_keys_recursive(alphabet.size(), key_size, 0, {});
-  }
-
-  void gen_keys_recursive(unsigned n, unsigned k, unsigned curr_idx,
-                          std::array<char_t, key_size> key_array) {
-    if (curr_idx == k) {
-      keys.push_back(key_array);
-      return;
-    }
-
-    for (unsigned x = 0; x < n; x++) {
-      key_array[curr_idx] = 'a' + x;
-      gen_keys_recursive(n, k, curr_idx + 1, key_array);
-    }
   }
 
   void load_input() {
