@@ -1,5 +1,6 @@
-add_library(euler STATIC 
+add_library(euler SHARED 
     ${CMAKE_SOURCE_DIR}/src/input.cpp
+    ${CMAKE_SOURCE_DIR}/src/poker.cpp
     ${CMAKE_SOURCE_DIR}/src/prime.cpp
     ${CMAKE_SOURCE_DIR}/src/util.cpp
 )

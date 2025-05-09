@@ -44,6 +44,41 @@ std::vector<unsigned long> get_n_primes(unsigned n) {
   return primes;
 }
 
+std::set<unsigned long> get_n_primes_set(unsigned n) {
+  if (n == 0)
+    return {};
+  else if (n == 1)
+    return {2};
+
+  std::set<unsigned long> primes{2};
+
+  unsigned long p{3};
+  while (primes.size() < n) {
+    if (is_prime(p))
+      primes.insert(p);
+    p += 2;
+  }
+  return primes;
+}
+
+std::unordered_set<unsigned long> get_n_primes_uset(unsigned n) {
+  if (n == 0)
+    return {};
+  else if (n == 1)
+    return {2};
+
+  std::unordered_set<unsigned long> primes{2};
+  primes.reserve(n);
+
+  unsigned long p{3};
+  while (primes.size() < n) {
+    if (is_prime(p))
+      primes.insert(p);
+    p += 2;
+  }
+  return primes;
+}
+
 bool is_prime_memoized(unsigned long n) {
   static std::unordered_set<unsigned long> memo;
 

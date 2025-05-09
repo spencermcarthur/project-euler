@@ -1,5 +1,3 @@
-include_directories(${CMAKE_SOURCE_DIR}/include)
-
 add_compile_options(-Wall -Wextra -Wpedantic -Werror)
 
 if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
@@ -8,7 +6,16 @@ else()
     add_compile_options(-Ofast)
 endif()
 
-foreach(N RANGE 1 30)
-    add_executable(${N} ${CMAKE_SOURCE_DIR}/src/${N}.cpp)
-    target_link_libraries(${N} euler)
+link_libraries(euler)
+
+foreach(N RANGE 1 50)
+    if(EXISTS ${CMAKE_SOURCE_DIR}/src/0001_0050/${N}.cpp)
+        add_executable(${N} ${CMAKE_SOURCE_DIR}/src/0001_0050/${N}.cpp)
+    endif()
+endforeach()
+
+foreach(N RANGE 51 100)
+    if(EXISTS ${CMAKE_SOURCE_DIR}/src/0051_0100/${N}.cpp)
+        add_executable(${N} ${CMAKE_SOURCE_DIR}/src/0051_0100/${N}.cpp)
+    endif()
 endforeach()

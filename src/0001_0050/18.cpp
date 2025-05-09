@@ -32,7 +32,7 @@ class Problem : public Problem_<18, Problem> {
   std::vector<std::vector<int>> input;
   void load_input() {
     std::filesystem::path filename(INPUT_DIR);
-    filename /= "triangle_0018.txt";
+    filename /= "0018_triangle.txt";
 
     std::ifstream fin(filename);
     if (!fin)

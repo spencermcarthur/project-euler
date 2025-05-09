@@ -34,7 +34,7 @@ class Problem : public Problem_<22, Problem> {
   std::vector<std::string> names;
   void load_input() {
     std::filesystem::path filename(INPUT_DIR);
-    filename /= "names_0022.txt";
+    filename /= "0022_names.txt";
 
     std::ifstream fin(filename);
     if (!fin)

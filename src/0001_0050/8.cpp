@@ -32,7 +32,7 @@ class Problem : public Problem_<8, Problem> {
 
   void load_input() {
     std::filesystem::path filename(INPUT_DIR);
-    filename /= "digits_0008.txt";
+    filename /= "0008_digits.txt";
 
     std::ifstream fin(filename);
     if (!fin)

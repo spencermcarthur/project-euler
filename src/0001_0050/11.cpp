@@ -61,7 +61,7 @@ class Problem : public Problem_<11, Problem> {
 
   void load_input() {
     std::filesystem::path filename(INPUT_DIR);
-    filename /= "numbers_0011.txt";
+    filename /= "0011_numbers.txt";
 
     std::ifstream fin(filename);
     if (!fin)
