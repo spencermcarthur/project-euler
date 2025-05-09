@@ -4,18 +4,19 @@
 
 #include "timer.hpp"
 
-template <unsigned SolnNum, class ProblemT> class Problem_ {
+// CRTP base class for solution implementation
+template <unsigned prob_num, class problem_t> class Problem_ {
 public:
   void solution(unsigned long n) {
-    std::cout << "Problem " << SolnNum << ": ";
+    std::cout << "Problem " << prob_num << ": ";
 
-    ProblemT *prob = static_cast<ProblemT *>(this);
-    std::string s;
+    problem_t *problem = static_cast<problem_t *>(this);
+    std::string time_str;
     {
-      Timer t(s);
-      prob->solution_impl(n);
+      Timer timer(time_str);
+      problem->solution_impl(n);
     }
 
-    std::cout << " (" << s << ")" << std::endl;
+    std::cout << " (" << time_str << ")" << std::endl;
   }
 };

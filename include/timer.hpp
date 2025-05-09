@@ -4,9 +4,10 @@
 #include <sstream>
 
 using namespace std::chrono;
-using clock_ = high_resolution_clock;
 
 class Timer {
+  using clock_ = high_resolution_clock;
+
 public:
   Timer(std::string &str) : str_(str) { start_ = clock_::now(); }
   ~Timer() {

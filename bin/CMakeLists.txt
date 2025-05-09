@@ -1,12 +1,11 @@
 add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+link_libraries(euler)
 
 if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
     add_compile_options(-ggdb3 -O0)
 else()
     add_compile_options(-Ofast)
 endif()
-
-link_libraries(euler)
 
 foreach(N RANGE 1 50)
     if(EXISTS ${CMAKE_SOURCE_DIR}/src/0001_0050/${N}.cpp)
