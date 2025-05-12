@@ -26,3 +26,6 @@ std::unordered_map<T, unsigned> count_freqs(const std::vector<T> &v) {
     freqs[t]++;
   return freqs;
 }
+
+unsigned roman_to_decimal(const std::string &);
+std::string decimal_to_roman(unsigned);
